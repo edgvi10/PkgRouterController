@@ -1,0 +1,29 @@
+{
+    "name": "edgvi10/router",
+    "description": "Uma biblioteca PHP com métodos utilitários para facilitar o desenvolvimento de aplicações.",
+    "type": "library",
+    "version": "1.0.1",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eduardo Vieira",
+            "email": "edgvi10@gmail.com",
+            "homepage": "https://github.com/edgvi10"
+        }
+    ],
+    "repositories": {
+        "github": {
+            "type": "vcs",
+            "url": "https://github.com/edgvi10/PkgRouterController"
+        }
+    },
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "EDGVI10\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
