@@ -8,10 +8,17 @@ class ResponseController
 
     public $headers = [];
     private $sent = false;
+    public $statusCode = 200;
+    public $statusMessage = "";
+
+    public $useJson = true;
+    public $contentType = "text/html; charset=utf-8";
 
     public function __construct($config = [])
     {
         $this->debug = $config["debug"] ?? false;
+        $this->useJson = $config["useJson"] ?? true;
+        if ($this->useJson) $this->contentType = "application/json; charset=utf-8";
 
         return $this;
     }
@@ -42,6 +49,7 @@ class ResponseController
         $isJsonRequest = (
             (isset($headers["Accept"]) && strpos($headers["Accept"], "application/json") !== false)
             || (isset($headers["Content-Type"]) && strpos($headers["Content-Type"], "application/json") !== false)
+            || $this->useJson
         );
 
         http_response_code($code);
@@ -59,7 +67,8 @@ class ResponseController
         echo json_encode([
             "error" => true,
             "code" => $code,
-            "message" => $message
+            "message" => $message,
+            "backtrace" => $this->debug ? debug_backtrace()[0] : null,
         ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         exit;
     }
