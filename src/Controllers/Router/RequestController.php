@@ -49,7 +49,7 @@ class RequestController
         return $_SERVER["HTTP_USER_AGENT"] ?? null;
     }
 
-    public function getAuthencation($headerName = "Authorization")
+    public function getAuthentication($headerName = "Authorization")
     {
         $header = getallheaders();
         if (!isset($header[$headerName])) return null;
