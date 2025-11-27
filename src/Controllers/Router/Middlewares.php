@@ -48,7 +48,7 @@ class Middlewares
             }
 
             // Executa o validador customizado
-            $result = call_user_func($validator, $token, $request);
+            $result = call_user_func($validator, $token, $request, $response, $params);
 
             if ($result === false) {
                 $response->withError("Unauthorized: Invalid token", 401);
