@@ -2,7 +2,7 @@
     "name": "edgvi10/router",
     "description": "Uma biblioteca PHP com métodos utilitários para facilitar o desenvolvimento de aplicações.",
     "type": "library",
-    "version": "1.0.1",
+    "version": "1.0.5",
     "license": "MIT",
     "authors": [
         {
