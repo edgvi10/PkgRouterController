@@ -129,6 +129,7 @@ class RouterController extends RequestController
         $previousMiddlewares = $this->groupMiddlewares;
 
         $this->basePath = rtrim($this->basePath, "/") . "/" . $prefix;
+        $this->basePath = rtrim($this->basePath, "/");
         $this->groupMiddlewares = array_merge($this->groupMiddlewares, $middlewares);
 
         call_user_func($callback, $this);
@@ -175,7 +176,7 @@ class RouterController extends RequestController
         try {
             $matches = [];
             $method = $this->request->getMethod();
-            $path = $this->route;
+            $path = rtrim($this->route, "/");
 
             foreach ($this->routes as $route) {
                 $routePath = rtrim($route["path"], "/");
